@@ -1,0 +1,38 @@
+{% include 'base.html' %}
+
+{% block title %} <title>details</title> {% endblock %}
+
+{% block content %}
+ <div class="container-fluid d-flex justify-content-between">
+    <h1>The Students Filled Data</h1>
+    <a class="btn btn-primary p-1 m-2" href="{{ url_for('index')}}"> Home Page</a>
+ </div>
+{% if students %}
+<table class="table table-bordered table-hover">
+    <thead class="bg-info text-light">
+        <tr>
+            <th scope="col">Work</th>
+            <th scope="col">Week</th>
+            <th scope="col">Day</th>
+            <th scope="col">Date</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for student in students %}
+            <tr>
+                <td>{{ student.work }}</td>
+                <td>{{ student.week }}</td>
+                <td>{{ student.day }}</td>
+                <td>{{ student.date }}
+                <td><a class="text-decoration-none btn btn-success" href="{{ url_for('update_student', student_id=student.id) }}">Update</a>
+                <a class="text-decoration-none btn btn-danger" href="{{ url_for('delete_student', student_id=student.id)}}">delete</a></td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p>No students data available.</p>
+{% endif %}
+
+{% endblock %}

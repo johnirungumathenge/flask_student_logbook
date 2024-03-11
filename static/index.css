@@ -1,0 +1,70 @@
+
+/* .container{
+    width: ;
+    box-shadow: rgba(100,100, 111, 0.2) 0px 7px 29px 0px;
+} */
+
+/* .form-control{
+    margin-bottom: 30px;
+}
+.container form input{
+    outline: none;
+}
+.row{
+    text-align: center;
+    margin: 5px;
+    padding: 5px;
+} */
+
+#container-fluid{
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    position: fixed;
+    top:0;
+    z-index: 100;
+}
+.cont{
+    margin-top: 5rem;
+}
+i{
+    color: white;
+}
+body{
+    background: lavender;
+}
+
+/* profile image */
+#profile-img{
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+}
+#profile{
+    font-size: 2rem;
+}
+
+/* popup */
+.popup{
+    width: 6rem;
+    background: white;
+    position: absolute;
+    top: 5;
+    right: 1rem;  
+    display: none;
+}
+.popup ul{
+    list-style-type: none;
+}
+
+.popup ul li a{
+    text-decoration: none;
+}
+footer{
+    position: relative;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    
+}
+

@@ -1,0 +1,60 @@
+<!-- templates/index.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css">
+    <title>Student Add Details</title>
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>Add Task Performed Details</h2>
+        <form method="POST" action="{{ url_for('index') }}">
+            {{ form.hidden_tag() }}
+            {{ form.csrf_token }}
+            <div class="mb-3">
+                {{ form.work.label(class="form-label") }} {{ form.work(class="form-control") }}
+            </div>
+            <div class="mb-3">
+                {{ form.week.label(class="form-label") }} {{ form.week(class="form-control") }}
+            </div>
+            <div class="mb-3">
+                {{ form.day.label(class="form-label") }} {{ form.day(class="form-control") }}
+            </div>
+            <div class="mb-3">
+                {{ form.date.label(class="form-label") }} {{ form.date(class="form-control") }}
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+        <hr>
+        <h2>Students</h2>
+        <ul>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col">Work</th>
+                        <th scope="col">Week</th>
+                        <th scope="col">Day</th>
+                        <th scope="col">Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for student in students %}
+                        <tr>
+                            <td>{{ student.work }}</td>
+                            <td>{{ student.week }}</td>
+                            <td>{{ student.day }}</td>
+                            <td>{{ student.date }}</td>
+                            <td><a href="{{ url_for('update_student', student_id=student.id) }}">Update</a></td>
+
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </ul>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

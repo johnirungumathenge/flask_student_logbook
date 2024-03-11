@@ -1,0 +1,149 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if current_user.is_authenticated %}
+<div class="container-fluid " id="container-fluid">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid  justify-content-between">
+            <div class="container">
+               <i class="bi bi-pass-fill" class="text-light"></i>
+                <a class="navbar-brand" href="#">Students</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                   
+                    <li class="nav-item">
+                        <a class="nav-link" href="#reviews">Reviews</a>
+                    </li>
+                    <li class="image d-flex">
+                        <span class="text-light m-2 p-2">{{ current_user.name }}</span>
+                        <i class="bi bi-person-check" id="profile"></i> 
+                        <!-- <img src="{{url_for('static', filename='images/workspace.jpg')}}" id="profile-img" alt=""> -->
+                    </li>
+                  
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+
+<!-- popup -->
+<div class="popup" id="popup">
+    <ul>       
+    <li class="">
+        <a class="" href="">profile</a>
+    </li>
+    <li class="">
+        <a class="" href="">logout</a>
+    </li>
+    </ul>
+</div>
+
+<div class="container cont">
+    <div class="card">
+        <div class="row g-0">
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title">How To Update Your Log Book</h5>
+                    
+                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
+                    <p>To fill out the logbook of attachment, diligently record daily activities, tasks, and reflections during your attachment period. Include details such as dates, project insights, and skills acquired. Ensure accuracy, consistency, and adherence to any specific guidelines provided by your supervisor or institution for a comprehensive and valuable record.</p>
+                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <img src="{{ url_for('static', filename='images/workspace.jpg') }}" alt="Image" class="img-fluid">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container mt-3">
+    <div class="row ">      
+        <form method="POST">
+            <h3 class="mt-2 mb-3">
+                Record Todays Activity                
+            </h3>
+            <p class="m-2 b">please select the specific day and week in boxes provided</p>            
+            <div class="mt-3">
+                <a  href="{{url_for('add_student')}}"   class="btn btn-primary">Update Activity</a>               
+            </div>
+        </form>
+    </div>
+</div>
+<p>You are logged in as {{ current_user.name }}</p>
+<a href="{{ url_for('logout') }}">Logout</a>
+<!-- edit activities -->
+<div class="container mt-3" id="reviews">
+    <h4>Edit Activities</h4>
+    <div class="image">
+    <p class="card-text">click the button to edit the desired activity</p>
+        <a href="" class="btn btn-info text-decoration-none">Show activities</a>
+    </div>
+</div>
+<!-- view updated activities -->
+<div class="container mt-3" id="reviews">
+    <h4>Lecturers Reviews</h4>
+    <div class="image">
+    <p class="card-text">click the button to see the reviews your made by lecturers</p>
+        
+    <a href="{{ url_for('view') }}" class="btn btn-danger">View Data</a>
+
+    </div>
+</div>
+<!-- frequently asked questions -->
+<div class="container mt-5" id="FAQS">
+    <div class="row">
+        <h2>FAQS</h2>
+        <div class="col-md-4">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Sam</h5>
+                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Mary</h5>
+                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">John</h5>
+                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+ <!-- footer section -->
+ <footer>
+    <div class="container-fluid text-center bg-light text-dark ">
+        <p class="p-2">&copy; 2024 Students Logbook record. All rights reserved.</p>
+    </div>
+</footer>
+
+
+{% else %}
+<p>You are not logged in.</p>
+<a href="{{ url_for('login') }}">Login</a>
+<a href="{{ url_for('register') }}">Register</a>
+{% endif %}
+{% endblock %}
